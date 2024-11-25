@@ -8,12 +8,12 @@ DOWNLOAD_URL="http://speedtest.tele2.net/1MB.zip"
 
 # Infinite loop to continuously check internet speed
 while true; do
-    # Get current timestamp
-    TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-
     # Measure download speed
     DOWNLOAD_SPEED=$(curl -s -w '%{speed_download}' -o /dev/null $DOWNLOAD_URL)
     DOWNLOAD_SPEED_Mbps=$(echo "scale=2; $DOWNLOAD_SPEED / 125000" | bc)
+
+    # Get current timestamp
+    TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
     # Check if speeds are valid numbers
     if ! [[ $DOWNLOAD_SPEED_Mbps =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
