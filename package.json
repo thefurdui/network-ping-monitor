@@ -1,11 +1,10 @@
 {
-  "name": "network-speed-monitor",
+  "name": "continuous-network-ping-monitor",
   "version": "1.0.0",
-  "description": "A tool to track internet speed test continuously",
-  "main": "network-speed-monitor.sh",
+  "description": "A script to monitor network ping continuously",
+  "main": "network-ping-monitor.sh",
   "scripts": {
-    "start": "./network-speed-monitor.sh",
-    "ping": "./network-ping-monitor.sh"
+    "start": "./network-ping-monitor.sh"
   },
   "author": "Andrei Furdui",
   "license": "ISC"

@@ -33,8 +33,8 @@ while true; do
     # Write the results to the output file
     echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps" >> $OUTPUT_FILE
 
-    # Wait for 10 seconds before the next test
-    sleep 10
+    # Wait for 2 seconds before the next test
+    sleep 2 
 done
 
 # Clean up
