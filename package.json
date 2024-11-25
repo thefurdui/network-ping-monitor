@@ -4,7 +4,8 @@
   "description": "A script to monitor network ping continuously",
   "main": "network-ping-monitor.sh",
   "scripts": {
-    "start": "./network-ping-monitor.sh"
+    "start": "./network-ping-monitor.sh",
+    "report": "./generate-error-report.sh"
   },
   "author": "Andrei Furdui",
   "license": "ISC"

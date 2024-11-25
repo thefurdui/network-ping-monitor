@@ -18,6 +18,7 @@ while true; do
     # Check if speeds are valid numbers
     if ! [[ $DOWNLOAD_SPEED_Mbps =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
         echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps | DROP" >> $OUTPUT_FILE
+        ./generate-error-report.sh
     else
         echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps" >> $OUTPUT_FILE
     fi
