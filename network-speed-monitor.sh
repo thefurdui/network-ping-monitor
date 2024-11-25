@@ -19,13 +19,17 @@ while true; do
     TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
     if [ "$SPEEDTEST_CMD" = "speedtest" ]; then
+        echo "Starting speed test using Ookla speedtest..." >&2
         # Run speedtest without advanced arguments
         SPEEDTEST_OUTPUT=$($SPEEDTEST_CMD 2>&1)
 
         # Check if the output contains an error
         if echo "$SPEEDTEST_OUTPUT" | grep -qi 'error'; then
-            echo "$TIMESTAMP | Error running speedtest" >> $OUTPUT_FILE
+            ERROR_MSG=$(echo "$SPEEDTEST_OUTPUT" | grep -i 'error' | tr '\n' ' ')
+            echo "$TIMESTAMP | Speed test failed: $ERROR_MSG" >> $OUTPUT_FILE
+            echo "Error: $ERROR_MSG" >&2
         else
+            echo "Speed test completed successfully." >&2
             # Parse download and upload speeds from the output
             DOWNLOAD=$(echo "$SPEEDTEST_OUTPUT" | grep 'Download' | awk '{print $2}')
             UPLOAD=$(echo "$SPEEDTEST_OUTPUT" | grep 'Upload' | awk '{print $2}')
@@ -36,13 +40,17 @@ while true; do
             echo "$TIMESTAMP | Download: $DOWNLOAD $DOWNLOAD_UNIT | Upload: $UPLOAD $UPLOAD_UNIT" >> $OUTPUT_FILE
         fi
     else
+        echo "Starting speed test using speedtest-cli..." >&2
         # Run speedtest-cli
         SPEEDTEST_OUTPUT=$($SPEEDTEST_CMD --simple 2>&1)
 
         # Check for errors
         if echo "$SPEEDTEST_OUTPUT" | grep -qi 'Cannot\|Error'; then
-            echo "$TIMESTAMP | Error running speedtest" >> $OUTPUT_FILE
+            ERROR_MSG=$(echo "$SPEEDTEST_OUTPUT" | grep -i 'Cannot\|Error' | tr '\n' ' ')
+            echo "$TIMESTAMP | Speed test failed: $ERROR_MSG" >> $OUTPUT_FILE
+            echo "Error: $ERROR_MSG" >&2
         else
+            echo "Speed test completed successfully." >&2
             # Extract Ping, Download, Upload speeds
             PING=$(echo "$SPEEDTEST_OUTPUT" | grep 'Ping' | awk '{print $2}')
             PING_UNIT=$(echo "$SPEEDTEST_OUTPUT" | grep 'Ping' | awk '{print $3}')
@@ -56,6 +64,6 @@ while true; do
         fi
     fi
 
-    # Wait for 60 seconds before the next test
-    sleep 60
+    echo "Waiting 10 seconds before next test..." >&2
+    sleep 10
 done
