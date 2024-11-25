@@ -31,7 +31,11 @@ while true; do
     fi
 
     # Write the results to the output file
-    echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps" >> $OUTPUT_FILE
+    if [ "$DOWNLOAD_SPEED_Mbps" = "0.00" ]; then
+        echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps | DROP" >> $OUTPUT_FILE
+    else
+        echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps" >> $OUTPUT_FILE
+    fi
 
     # Wait for 2 seconds before the next test
     sleep 2 
