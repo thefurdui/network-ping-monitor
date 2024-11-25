@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Output file
-OUTPUT_FILE="internet_speed_log.txt"
+OUTPUT_FILE="network_speed_log.txt"
 
 # Check if speedtest or speedtest-cli is installed
 if command -v speedtest &> /dev/null; then
