@@ -1,5 +1,5 @@
 {
-  "name": "continuous-network-ping-monitor",
+  "name": "network-ping-monitor",
   "version": "1.0.0",
   "description": "A script to monitor network ping continuously",
   "main": "network-ping-monitor.sh",
