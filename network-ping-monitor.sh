@@ -27,6 +27,7 @@ while true; do
 
     # Check if speeds are valid numbers
     if ! [[ $DOWNLOAD_SPEED_Mbps =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+        echo "$TIMESTAMP | Download: $DOWNLOAD_SPEED_Mbps Mbps | ERROR"
         DOWNLOAD_SPEED_Mbps="0.00"
     fi
 
