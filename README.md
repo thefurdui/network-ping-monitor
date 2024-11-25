@@ -5,7 +5,7 @@ Stupid Czech T-Mobile can't solve a problem with my network connection dropping 
 This script continuously monitors the network ping and approximates download speed.
 It's a rough approximation, I get 10x less on my 250Mbps network, but that's what you get when checking on a 1 MB file.
 
-Would be happy if it helps you 😉.
+Would be happy if it helps you 😉
 
 ## Usage
 
