@@ -1,0 +1,11 @@
+{
+  "name": "network-speed-monitor",
+  "version": "1.0.0",
+  "description": "A tool to track internet speed test continuously",
+  "main": "network-speed-monitor.sh",
+  "scripts": {
+    "start": "./network-speed-monitor.sh"
+  },
+  "author": "Andrei Furdui",
+  "license": "ISC"
+}
