@@ -64,6 +64,6 @@ while true; do
         fi
     fi
 
-    echo "Waiting 10 seconds before next test..." >&2
-    sleep 10
+    echo "Waiting 60 seconds before next test..." >&2
+    sleep 60
 done
